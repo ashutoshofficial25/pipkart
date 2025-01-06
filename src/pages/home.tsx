@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+      <div className="grid gap-x-2 gap-y-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center">
         {productsWithCount.map((product) => (
           <ProductCard
             key={product.id}
