@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import axiosInstance from "../utils/axios";
 import { IProduct } from "../@types";
 import ProductCard from "../components/ProductCard";
+import styled from "styled-components";
 
 export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -54,17 +55,41 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-6">
-      <div className="grid gap-x-2 gap-y-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center">
+    <Container>
+      <ProductsGrid>
         {productsWithCount.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
-            onAdd={() => addToCart(product.id)}
-            onRemove={() => removeFromCart(product.id)}
+            onAdd={addToCart}
+            onRemove={removeFromCart}
           />
         ))}
-      </div>
-    </div>
+      </ProductsGrid>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+`;
+
+const ProductsGrid = styled.div`
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+`;
