@@ -110,7 +110,7 @@ const ProductDetails = styled.div`
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #6b7280;
   }
 `;
